@@ -1,0 +1,97 @@
+1、登录注册
+
+1.1、注册
+http://localhost:8080/user/register
+类型：PostJson
+入参：{"account":"test1","phone":"13712341412","password":"1234567a"}
+
+1.2、登录
+http://localhost:8080/user/login
+类型：PostJson
+入参：{"account":"test1","password":"1234567a"}
+返回：
+{
+    "code": 200,
+    "info": "成功",
+    "data": {
+        "userId": 1
+    }
+}
+
+----------------------------------------------------------------
+2、分子
+
+2.1、新增分子
+http://localhost:8080/smiles/add
+类型：PostJson
+参数：{"smiles":"c1cccc1","jme":"jme","description":"苯环"}
+
+2.2 修改分子
+http://localhost:8080/smiles/modify
+类型：PostJson
+参数：{"id":1,"smiles":"c1cccc1","jme":"jme"}
+说明：如果smiles、jme、description有原值，需要都传入
+
+2.3 修改分子备注
+http://localhost:8080/smiles/description
+类型：PostJson
+参数：{"id":2,"description":"苯环啊"}
+
+2.4 获取分子详情
+http://localhost:8080/smiles/detail?id=1
+类型：Get
+返回：
+{
+    "code": 200,
+    "info": "成功",
+    "data": {
+        "id": 1,
+        "smiles": "c1cccc1",
+        "jme": "jme",
+        "pngStr": "",
+        "ctime": "2020-04-07T22:11:43.000+0000",
+        "description": "苯环",
+        "userCollect": false
+    }
+}
+
+2.5 获取分子列表
+http://localhost:8080/smiles/list?userId=1&page=1&page=10
+类型：Get
+返回：
+{
+    "code": 200,
+    "info": "成功",
+    "data": {
+        "page": 1,
+        "pageSize": 10,
+        "allCount": 2,
+        "list": [
+            {
+                "id": 2,
+                "smiles": "c1cccc1",
+                "jme": "jme",
+                "pngStr": "",
+                "ctime": "2020-04-07T22:13:56.000+0000",
+                "description": "苯环啊",
+                "userCollect": false
+            },
+            {
+                "id": 1,
+                "smiles": "c1cccc1",
+                "jme": "jme",
+                "pngStr": "",
+                "ctime": "2020-04-07T22:11:43.000+0000",
+                "description": "苯环",
+                "userCollect": false
+            }
+        ],
+        "allPage": 1
+    }
+}
+
+2.6 分子收藏
+http://localhost:8080/smiles/collect
+类型：PostJson
+参数：{"userId":1,"smilesId":1,"collect":1}
+说明：collect 1-收藏，0-取消收藏

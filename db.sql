@@ -24,5 +24,6 @@ CREATE TABLE `smiles_collect` (
   `user_id` int(11) DEFAULT NULL,
   `smiles_id` int(11) DEFAULT NULL,
   `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `smiles_collect_pk` (`user_id`,`smiles_id`)
 ) ENGINE=InnoDB;

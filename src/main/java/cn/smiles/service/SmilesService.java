@@ -65,9 +65,11 @@ public class SmilesService {
     }
     
     public int collect(int userId, int smilesId, int collect){
-        if(Objects.equal(collect, 1)){
+        SmilesCollect sc = smilesCollectMapper.getSmilesCollect(userId, smilesId);
+        if(sc == null && Objects.equal(collect, 1)){
             return smilesCollectMapper.insert(userId, smilesId);
-        } else if(Objects.equal(collect, 0)){
+        }
+        if(sc != null && Objects.equal(collect, 0)){
             return smilesCollectMapper.delete(userId, smilesId);
         }
         return 1;

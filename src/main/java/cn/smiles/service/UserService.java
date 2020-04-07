@@ -39,7 +39,7 @@ public class UserService {
         if(user == null){
             return new ResultJson(CommonStatus.USER_NOT_EXIST);
         }
-        if(Objects.equal(user.getPassword(),MD5.getMD5Code(password))){
+        if(!Objects.equal(user.getPassword(),MD5.getMD5Code(password))){
             return new ResultJson(CommonStatus.USER_PASSWORD_ERROR);
         }
         JSONObject jo = new JSONObject();
