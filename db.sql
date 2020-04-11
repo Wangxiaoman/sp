@@ -1,3 +1,7 @@
+CREATE DATABASE smiles;
+
+USE smiles;
+
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `account` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
